@@ -18,13 +18,13 @@ public class ResourceConfig {
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new RoleConverter());
         httpSecurity
                 .authorizeHttpRequests(request ->
-                request.requestMatchers("/test").permitAll()
-                        .requestMatchers("/auth").permitAll()
-                        .requestMatchers("/private").hasRole("USER")
-                        .requestMatchers("/public").hasRole("PUBLIC")
-                        .anyRequest()
-                        .authenticated()
-                        )
+                        request.requestMatchers("/test").permitAll()
+                                .requestMatchers("/auth").permitAll()
+                                .requestMatchers("/private").hasRole("USER")
+                                .requestMatchers("/public").hasRole("PUBLIC")
+                                .anyRequest()
+                                .authenticated()
+                )
                 .oauth2ResourceServer()
                 .jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter);
